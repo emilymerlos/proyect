@@ -3,7 +3,14 @@ var diaNacimiento = prompt("Ingrese el día de nacimiento", "Ejemplo: Si nació 
 var mesNacimiento = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació en enero, solamente ingresar 1 porque es el mes 1");
 var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
 
-// var conyuge = prompt("¿Tiene cónyuge?", "SI/NO");
+var conyuge = prompt("¿Tiene cónyuge?", "SI/NO").toLowerCase();
+if(conyuge == "si"){
+    var diaNacimientoConyuge = prompt("Ingrese el día de nacimiento", "Ejemplo: Si nació el 22 de enero, solamente ingresar 22");
+    var mesNacimientoConyuge = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació en enero, solamente ingresar 1 porque es el mes 1");
+    var anioNacimientoConyuge = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
+}else{
+    var mensajeRecargoConyuge = "El cliente no tiene conyuge.";
+}
 // var hijos = prompt("¿Tiene hijos?", "SI/NO");
 // var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
 
@@ -17,6 +24,7 @@ var fecha = new Date();
 var anioActual = fecha.getFullYear();
 
 var edadAseguradoPrincipal = anioActual - anioNacimiento;
+var edadConyuge = anioActual - anioNacimientoConyuge;
 
 var mensajeRecargo = "";
 
@@ -46,9 +54,31 @@ if(edadAseguradoPrincipal < 18){
     recargos = 0;
 }
 
+// validaciones para recargos por el conyuge
+if(edadConyuge < 30){
+    mensajeRecargoConyuge = "se sumara un recargo del 1%."
+    recargos = recargos + (precioBase * 0.01);
+}else if(edadConyuge >= 30 && edadConyuge < 40){
+    mensajeRecargoConyuge = "se sumara un recargo del 2%."
+    recargos = recargos + (precioBase * 0.02);
+}else if(edadConyuge >= 40 && edadConyuge < 50){
+    mensajeRecargoConyuge = "se sumara un recargo del 3%."
+    recargos = recargos + (precioBase * 0.03);
+}else if(edadConyuge >= 50 && edadConyuge < 70){
+    mensajeRecargoConyuge = "se sumara un recargo del 5%."
+    recargos = recargos + (precioBase * 0.05);
+}else{
+    mensajeRecargoConyuge = "no se sumaran recargos."
+  }
+
 console.log("Cliente: " + nombreCompleto);
 console.log("Edad: " + edadAseguradoPrincipal + " años.");
 console.log("Por tener " + edadAseguradoPrincipal + " años, " + mensajeRecargo);
+if(conyuge != "si"){
+    console.log("Por no tener conyuge no se sumaron recargos.");
+  }else{
+    console.log("Por tener " + edadConyuge + " años el/la conyuge, " + mensajeRecargoConyuge);
+  }
 console.log("El total de recargos es de: " + recargos );
 
 var totalPagar = precioBase + comision + recargos;
