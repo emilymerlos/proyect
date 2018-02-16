@@ -23,24 +23,24 @@ var mensajeRecargo = "";
 if(edadAseguradoPrincipal < 18){
     mensajeRecargo = "No puede ser asegurado dado que no es mayor a 18 años.";
     recargos = 0;
-}else if(edadAseguradoPrincipal < 21){
+}else if(edadAseguradoPrincipal >= 18 && edadAseguradoPrincipal < 21){
     mensajeRecargo = "El asegurado no tiene ningun recargo."
     recargos = 0;
-}else if(edadAseguradoPrincipal >= 21 && edadAseguradoPrincipal <= 25){
+}else if(edadAseguradoPrincipal >= 21 && edadAseguradoPrincipal < 25){
     mensajeRecargo = "El asegurado tendra un recargo del 1%."
-    recargos = 0.01;
-}else if(edadAseguradoPrincipal > 25 && edadAseguradoPrincipal <= 30){
+    recargos = precioBase * 0.01;
+}else if(edadAseguradoPrincipal >= 25 && edadAseguradoPrincipal < 30){
     mensajeRecargo = "El asegurado tendra un recargo del 2%."
-    recargos = 0.02;
-}else if(edadAseguradoPrincipal > 30 && edadAseguradoPrincipal <= 40){
+    recargos = precioBase * 0.02;
+}else if(edadAseguradoPrincipal >= 30 && edadAseguradoPrincipal < 40){
     mensajeRecargo = "El asegurado tendra un recargo del 5%."
-    recargos = 0.05;
-}else if(edadAseguradoPrincipal > 40 && edadAseguradoPrincipal <= 50){
+    recargos = precioBase * 0.05;
+}else if(edadAseguradoPrincipal >= 40 && edadAseguradoPrincipal < 50){
     mensajeRecargo = "El asegurado tendra un recargo del 8%."
-    recargos = 0.08;
-}else if(edadAseguradoPrincipal > 50 && edadAseguradoPrincipal <= 65){
+    recargos = precioBase * 0.08;
+}else if(edadAseguradoPrincipal >= 50 && edadAseguradoPrincipal <= 65){
     mensajeRecargo = "El asegurado tendra un recargo del 12%."
-    recargos = 0.12;
+    recargos = precioBase * 0.12;
 }else if(edadAseguradoPrincipal > 65){
     mensajeRecargo = "Ya no puede ser asegurado por motivos de edad."
     recargos = 0;
