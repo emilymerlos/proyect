@@ -26,10 +26,24 @@ var comision = precioBase * 0.30;
 var recargos = 0;
 
 var fecha = new Date();
+var diaActual = fecha.getDate();
+var mesActual = fecha.getMonth()+1;
 var anioActual = fecha.getFullYear();
 
 var edadAseguradoPrincipal = anioActual - anioNacimiento;
+if(mesActual < mesNacimiento){
+    edadAseguradoPrincipal--;
+}
+if((mesNacimiento == mesActual) && (diaActual < diaNacimiento)){
+    edadAseguradoPrincipal--;
+}
 var edadConyuge = anioActual - anioNacimientoConyuge;
+if(mesActual < mesNacimientoConyuge){
+    edadConyuge--;
+}
+if((mesNacimientoConyuge == mesActual) && (diaActual < diaNacimientoConyuge)){
+    edadConyuge--;
+}
 
 var mensajeRecargo = "";
 
