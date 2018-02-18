@@ -15,9 +15,6 @@ if(conyuge == "si"){
 var hijos = prompt("¿Tiene hijos?", "SI/NO").toLowerCase();
 if(hijos == "si"){
   var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
- var diaNacimientoHijos = prompt("Ingrese el día de nacimiento", "Ejemplo: Si nació el 22 de enero, solamente ingresar 22");
-    var mesNacimientoHijos = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació en enero, solamente ingresar 1 porque es el mes 1");
-    var anioNacimientoHijos = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
 }else{
     var mensajeRecargoHijos = "El cliente no tiene Hijos.";
 }
@@ -33,7 +30,6 @@ var anioActual = fecha.getFullYear();
 
 var edadAseguradoPrincipal = anioActual - anioNacimiento;
 var edadConyuge = anioActual - anioNacimientoConyuge;
-var edadHijos = anioActual - anioNacimientoHijos;
 
 var mensajeRecargo = "";
 
@@ -80,13 +76,6 @@ if(edadConyuge < 30){
     mensajeRecargoConyuge = "no se sumaran recargos."
   }
 
-// validaciones para recargos por cantidad de Hijos
-if(edadHijos < 21){
-    mensajeRecargoHijos = "se sumara un recargo del 1%."
-    recargos = recargos + (precioBase * 0.01) * cantidadHijos;
-}else{
-    mensajeRecargoHijos = "no se sumaran recargos."
-  }
 
 console.log("Cliente: " + nombreCompleto);
 console.log("Edad: " + edadAseguradoPrincipal + " años.");
@@ -99,7 +88,8 @@ if(conyuge != "si"){
 if(hijos != "si"){
     console.log("Por no tener hijos no se sumaron recargos.");
   }else{
-    console.log("Por tener " + cantidadHijos + " Hijo/s, " + mensajeRecargoHijos);
+    recargos = recargos + (precioBase * 0.01) * cantidadHijos;
+    console.log("Por tener " + cantidadHijos + " Hijo/s, " + "se sumara un recargo del 1%.");
   }
 console.log("El total de recargos es de: " + recargos );
 
