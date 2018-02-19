@@ -3,6 +3,7 @@ var diaNacimiento = prompt("Ingrese el día de nacimiento", "Ejemplo: Si nació 
 var mesNacimiento = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació en enero, solamente ingresar 1 porque es el mes 1");
 var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
 
+const precioBase = 250;
 var mensajeRecargo = "";
 var asegurado = 1;
 
