@@ -6,6 +6,8 @@ var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació
 const precioBase = 250;
 var mensajeRecargo = "";
 var asegurado = 1;
+var comision = precioBase * 0.30;
+var recargos = 0;
 
 var fecha = new Date();
 var diaActual = fecha.getDate();
@@ -65,12 +67,6 @@ if(asegurado == 1){
     }else{
         var mensajeRecargoHijos = "El cliente no tiene Hijos.";
     }
-    
-    const precioBase = 250;
-        
-    var comision = precioBase * 0.30;
-
-    var recargos = 0;
 
     var edadConyuge = anioActual - anioNacimientoConyuge;
     if(mesActual < mesNacimientoConyuge){
